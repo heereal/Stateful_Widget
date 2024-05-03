@@ -14,13 +14,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // 플러터에서 데이터 = Dart의 클래스 프로퍼티
-  int counter = 0;
+  List<int> numbers = [];
 
   void onClicked() {
-    // setState 함수를 호출해서 플러터 위젯에게 새로운 데이터가 있다고 알려 줌 
+    // setState 함수를 호출해서 플러터 위젯에게 새로운 데이터가 있다고 알려 줌
     // -> build 메서드 재실행 (UI 업데이트)
     setState(() {
-      counter = counter + 1;
+      numbers.add(numbers.length);
     });
   }
 
@@ -38,12 +38,8 @@ class _MyAppState extends State<MyApp> {
                   fontSize: 30,
                 ),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(
-                  fontSize: 30,
-                ),
-              ),
+              // collection for
+              for (var num in numbers) Text('$num'),
               IconButton(
                 onPressed: onClicked,
                 icon: const Icon(
