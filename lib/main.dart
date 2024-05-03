@@ -49,12 +49,32 @@ class _MyAppState extends State<MyApp> {
               showTitle
                   ? const MyLargeTitle()
                   : const Text(
-                      'nothing',
+                      'Nothing',
+                      style: TextStyle(
+                        fontSize: 30,
+                      ),
                     ),
               IconButton(
                 onPressed: toggleTitle,
                 icon: const Icon(
                   Icons.remove_red_eye,
+                  size: 40,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                'Click Count',
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+              for (var num in numbers) Text('$num'),
+              IconButton(
+                onPressed: clickCount,
+                icon: const Icon(
+                  Icons.add_circle,
                   size: 40,
                 ),
               ),
