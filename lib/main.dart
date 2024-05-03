@@ -27,29 +27,42 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
+      // theme으로 앱의 모든 스타일을 한 곳에서 지정할 수 있음
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ),
+      home: const Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Click Count',
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ),
-              // collection for
-              for (var num in numbers) Text('$num'),
-              IconButton(
-                onPressed: onClicked,
-                icon: const Icon(
-                  Icons.add_circle,
-                ),
-                iconSize: 40,
-              ),
+              MyLargeTitle(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MyLargeTitle extends StatelessWidget {
+  const MyLargeTitle({
+    super.key,
+  });
+
+  @override
+  // context는 위젯 트리의 모든 부모 요소들에 대한 정보를 담고 있음
+  Widget build(BuildContext context) {
+    return Text(
+      'My Large Title',
+      style: TextStyle(
+        fontSize: 30,
+        // context를 통해 부모 위젯의 Theme에 접근
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
